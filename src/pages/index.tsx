@@ -1,4 +1,3 @@
-import Header from "@/components/header/Header";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
@@ -15,7 +14,6 @@ export default function Home() {
       </Head>
 
       <div>
-        <Header />
         <button onClick={() => router.push('/dashboard')}>Go to dashboard</button>
       </div>
 
