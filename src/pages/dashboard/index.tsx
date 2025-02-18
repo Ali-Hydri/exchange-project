@@ -1,19 +1,17 @@
-import Dashboard from "@/components/dashboard/Dashboard"
-import styled from "styled-components"
+import Dashboard from "@/components/dashboard/Dashboard";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
-    background-color: #000B1D;
-`
+  background-color: #000b1d;
+  width: 100%;
+`;
 
 const dashboard = () => {
+  return (
+    <Wrapper>
+      <Dashboard />
+    </Wrapper>
+  );
+};
 
-
-    return (
-        <Wrapper>
-        <Dashboard/>
-        </Wrapper>
-
-    )
-}
-
-export default dashboard
+export default dashboard;
