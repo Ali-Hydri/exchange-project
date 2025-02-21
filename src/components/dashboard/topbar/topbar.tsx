@@ -11,7 +11,7 @@ const TopBarContainer = styled.div`
   margin-right: 113px;
   border-radius: 16px;
   background-color: #101828;
-  font-size: 14px;
+  font-size: 18px;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -4,10 +4,40 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ChartImg from "@/assets/images/Chart 35.png";
 
+type CoinType = {
+  id: string;
+  symbol: string;
+  name: string;
+  image: string;
+  ath_date: string;
+  atl_date: string;
+  roi: null;
+  last_updated: string;
+  current_price: number;
+  market_cap: number;
+  market_cap_rank: number;
+  fully_diluted_valuation: number;
+  total_volume: number;
+  high_24h: number;
+  low_24h: number;
+  price_change_24h: number;
+  price_change_percentage_24h: number;
+  market_cap_change_24h: number;
+  market_cap_change_percentage_24h: number;
+  circulating_supply: number;
+  total_supply: number;
+  max_supply: number;
+  ath: number;
+  ath_change_percentage: number;
+  atl: number;
+  atl_change_percentage: number;
+};
+
 const ChartBoxTable = styled.table`
   direction: rtl;
   width: 100%;
-  height: 95%;
+  height: 92%;
+  
   @media (max-width: 768px) {
     th:nth-child(n + 4),
     td:nth-child(n + 4) {
@@ -19,6 +49,7 @@ const ChartBoxTable = styled.table`
 const ChartListTableHead = styled.th`
   height: 40px;
   border-bottom: 2px solid gray;
+  
 `;
 
 const ChartBoxTableBody = styled.th`
@@ -34,7 +65,7 @@ const ChartList = styled.div`
   font-size: 24px;
   padding: 20px;
   @media (max-width: 768px) {
-    height: 100%;
+    height: auto;
     grid-column: 1;
     grid-row: 10;
     display: grid;
@@ -42,8 +73,16 @@ const ChartList = styled.div`
   }
 `;
 
+const AllCoins = styled.div`
+  text-align: center;
+  color: #0257ea;
+  font-size: 24px;
+  margin-bottom: 5px;
+`;
+
 const Chart = () => {
   const [coins, setCoins] = useState([]);
+  const exchangeRate = 90000;
 
   console.log(coins);
 
@@ -56,7 +95,7 @@ const Chart = () => {
         setCoins(coinsRes.data);
       } catch (err) {
         console.log(err);
-        // alert("خطا در ارتباط با شبکه")
+        alert("خطا در ارتباط با شبکه");
       }
     };
     getCoins();
@@ -82,14 +121,14 @@ const Chart = () => {
           </thead>
           <tbody>
             {coins ? (
-              coins.slice(0, 11).map((coin: any, idx) => {
+              coins.slice(0, 11).map((coin: CoinType, idx) => {
                 return (
                   <tr key={idx}>
                     <ChartBoxTableBody>
                       <Image
                         src={coin.image}
-                        width={22}
-                        height={22}
+                        width={28}
+                        height={28}
                         alt="ICN"
                       />{" "}
                       {coin.symbol.toUpperCase()}{" "}
@@ -97,11 +136,21 @@ const Chart = () => {
                     <ChartBoxTableBody>
                       {coin.current_price} $
                     </ChartBoxTableBody>
-                    <ChartBoxTableBody>
-                      {coin.price_change_percentage_24h}%
+                    <ChartBoxTableBody
+                      style={{
+                        color:
+                          coin.market_cap_change_percentage_24h > 0
+                            ? "#00966D"
+                            : "#ff0000",
+                      }}
+                    >
+                      {coin.price_change_percentage_24h.toFixed(2)}%
+                      {coin.price_change_24h > 0 ? "▲" : "▼"}
                     </ChartBoxTableBody>
-                    <ChartBoxTableBody>تومن</ChartBoxTableBody>
                     <ChartBoxTableBody>
+                      {coin.current_price * exchangeRate} تومن
+                    </ChartBoxTableBody>
+                    <ChartBoxTableBody style={{ direction: "ltr" }}>
                       {coin.market_cap_change_24h}
                     </ChartBoxTableBody>
                     <ChartBoxTableBody>
@@ -114,7 +163,9 @@ const Chart = () => {
               <span>loading...</span>
             )}
           </tbody>
+          {/* <br /> */}
         </ChartBoxTable>
+        <AllCoins>مشاهده همه</AllCoins>
       </ChartList>
     </>
   );

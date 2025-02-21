@@ -12,6 +12,7 @@ const GradeBoxContainer = styled.div`
   display: flex;
   direction: rtl;
   justify-content: space-between;
+  font-size: 20px;
   @media (max-width: 768px) {
     height: 100%;
     grid-column: 1;

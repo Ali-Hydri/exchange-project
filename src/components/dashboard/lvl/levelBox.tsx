@@ -30,13 +30,13 @@ const LvlTextBox = styled.div`
   background-color: #101828;
 `;
 const LvlText1 = styled.div`
-  font-size: 20px;
+  font-size: 24px;
   padding-right: 20px;
   color: #fff;
   background-color: #101828;
 `;
 const LvlText2 = styled.div`
-  font-size: 14px;
+  font-size: 18px;
   padding-left: 20px;
   padding-top: 7px;
   color: #e7e9e8;

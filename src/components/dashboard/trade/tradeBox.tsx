@@ -8,7 +8,7 @@ import Line from "@/assets/images/Line 57.png";
 import TetherIcn from "@/assets/images/tether.png";
 import arrow from "@/assets/images/arrow-swap.png";
 import circles from "@/assets/images/Circles.png";
-import Trade from "@/pages/api/tradeData";
+import Trade from "@/components/services/tradeData";
 
 const LeftBox = styled.div`
   grid-column: 1;
@@ -56,7 +56,7 @@ const LeftBoxInput1 = styled.div`
 const LeftBoxInput1Text1 = styled.div`
   display: flex;
   justify-content: space-between;
-  font-size: 14px;
+  font-size: 19px;
   align-items: center;
 `;
 const LeftBoxInput = styled.input`
@@ -68,18 +68,31 @@ const LeftBoxInput = styled.input`
   padding-right: 8px;
   color: #fff;
   border: none;
-  width: 80%;
+  width: 90%;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  &:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
 `;
 const LeftBoxInputDiv = styled.div`
   width: 100%;
   border: 1px solid gray;
   border-radius: 8px;
-  padding-top: 10px;
   padding-right: 10px;
+  height: 50px;
 `;
 
 const LeftBoxInput1Text2 = styled.div`
-  font-size: 14px;
+  font-size: 17px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -100,8 +113,9 @@ const LeftBoxButton = styled.button`
   background-color: #0257ea;
   border: none;
   border-radius: 8px;
-  height: 40px;
+  height: 50px;
   color: #fff;
+  font-size: 19px;
   cursor: pointer;
   &:hover {
     background-color: #01458e;
@@ -109,7 +123,7 @@ const LeftBoxButton = styled.button`
 `;
 
 const LeftBoxInput2Text = styled.div`
-  font-size: 14px;
+  font-size: 19px;
 `;
 
 const LeftBoxFooter = styled.div`
@@ -118,7 +132,7 @@ const LeftBoxFooter = styled.div`
 `;
 const LeftBoxFooterImg = styled.div``;
 const LeftBoxFooterText = styled.div`
-  font-size: 20px;
+  font-size: 25px;
 `;
 
 const TradeBox = () => {

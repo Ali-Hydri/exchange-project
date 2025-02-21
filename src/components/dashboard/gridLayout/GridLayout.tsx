@@ -10,7 +10,6 @@ import BlueCard from "../card/BlueCard";
 import TradeBox from "../trade/tradeBox";
 import TopBar from "@/components/dashboard/topbar/topbar";
 import SideBar from "../sidebar/sidebar";
-
 const GridLayout = () => {
   return (
     <>
@@ -39,14 +38,14 @@ const GridContainer = styled.div`
   grid-template-columns: auto auto auto min-content;
   color: white;
   background-color: #000b1d;
+  width: 100%;
 
   @media (max-width: 768px) {
-    // برای موبایل
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     display: grid;
     gap: 60px;
     width: 100%;
-    padding: 0 50px;
+    padding: 10px 50px;
   }
 `;

@@ -5,12 +5,42 @@ import axios from "axios";
 import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
+type CoinType = {
+  id: string;
+  symbol: string;
+  name: string;
+  image: string;
+  ath_date: string;
+  atl_date: string;
+  roi: null;
+  last_updated: string;
+  current_price: number;
+  market_cap: number;
+  market_cap_rank: number;
+  fully_diluted_valuation: number;
+  total_volume: number;
+  high_24h: number;
+  low_24h: number;
+  price_change_24h: number;
+  price_change_percentage_24h: number;
+  market_cap_change_24h: number;
+  market_cap_change_percentage_24h: number;
+  circulating_supply: number;
+  total_supply: number;
+  max_supply: number;
+  ath: number;
+  ath_change_percentage: number;
+  atl: number;
+  atl_change_percentage: number;
+};
+
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const ChartBoxTable = styled.table`
   direction: rtl;
   width: 100%;
   height: 95%;
+  font-size: 18px;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -198,7 +228,7 @@ const ChartBox = () => {
         setCoins(coinsRes.data);
       } catch (err) {
         console.log(err);
-        // alert("خطا در ارتباط با شبکه")
+        alert("خطا در ارتباط با شبکه");
       }
     };
     getCoins();
@@ -222,7 +252,7 @@ const ChartBox = () => {
             </thead>
             <tbody>
               {coins ? (
-                coins.slice(0, 6).map((coin: any, idx) => {
+                coins.slice(0, 6).map((coin: CoinType, idx) => {
                   return (
                     <tr key={idx}>
                       <ChartBoxTableBody>
@@ -234,8 +264,16 @@ const ChartBox = () => {
                         />{" "}
                         {coin.symbol.toUpperCase()}{" "}
                       </ChartBoxTableBody>
-                      <ChartBoxTableBody>
-                        {coin.market_cap_change_percentage_24h}%
+                      <ChartBoxTableBody
+                        style={{
+                          color:
+                            coin.market_cap_change_percentage_24h > 0
+                              ? "#00966D"
+                              : "#ff0000",
+                        }}
+                      >
+                        {coin.market_cap_change_percentage_24h.toFixed(2)}%
+                        {coin.price_change_24h > 0 ? "▲" : "▼"}
                       </ChartBoxTableBody>
                       <ChartBoxTableBody>
                         {coin.current_price} $

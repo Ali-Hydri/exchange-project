@@ -98,7 +98,7 @@ const FourCurrencies = () => {
                 <Image src={coin.image} width={50} height={50} alt="ICN" />{" "}
               </CoinIcon>
               {coin.symbol.toUpperCase()}
-              <span>{coin.current_price} $</span>
+              <span>$ {coin.current_price}</span>
             </Coins>
           );
         })

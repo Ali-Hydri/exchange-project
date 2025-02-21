@@ -50,7 +50,7 @@ const NavLeft = styled.div`
 const NavLogo = styled.div`
   text-align: center;
   padding-right: 25px;
-  font-size: 24px;
+  font-size: 30px;
   display: flex;
   gap: 5px;
   font-weight: bold;
@@ -65,7 +65,7 @@ const NavLogo = styled.div`
 const NavRightText = styled.div`
   display: flex;
   gap: 20px;
-  font-size: 14px;
+  font-size: 18px;
   color: #fff;
   padding-right: 65px;
   cursor: pointer;
