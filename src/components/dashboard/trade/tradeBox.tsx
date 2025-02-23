@@ -10,6 +10,70 @@ import arrow from "@/assets/images/arrow-swap.png";
 import circles from "@/assets/images/Circles.png";
 import Trade from "@/components/services/tradeData";
 
+const TradeBox = () => {
+  return (
+    <LeftBox>
+      <LeftBoxHead>
+        <LeftBoxHeadText1>
+          <span>تعیین قیمت</span>
+          <Image
+            src={BigLine}
+            alt="BigLine"
+            width={200}
+            style={{ margin: "-4px" }}
+          />
+        </LeftBoxHeadText1>
+        <Image src={Line} alt="Line" height={30} style={{ paddingRight: 6 }} />
+        <LeftBoxHeadText2>
+          <span>معامله سریع</span>
+          <Image src={BlueLine} alt="BlueLine" style={{ margin: "-5px" }} />
+        </LeftBoxHeadText2>
+      </LeftBoxHead>
+      <LeftBoxInput1>
+        <LeftBoxInput1Text1>
+          <span>پرداخت میکنم:</span>
+          <LeftBoxInput1Text2>
+            <span>موجودی: ۲/۵۰۰/۰۰۰ IRT</span>
+            <Image src={Wallet} alt="Wallet" width={23} height={23} />
+          </LeftBoxInput1Text2>
+        </LeftBoxInput1Text1>
+
+        <LeftBoxInputDiv>
+          <Image src={IRN} alt="IRN" width={27} height={27} />
+          <LeftBoxInput type="number" placeholder="تومان" />
+        </LeftBoxInputDiv>
+      </LeftBoxInput1>
+
+      <LeftBoxArrow>
+        <Image src={arrow} alt="arrow" width={30} height={30} />
+      </LeftBoxArrow>
+
+      <LeftBoxInput2>
+        <LeftBoxInput2Text>
+          <span>دریافت میکنم:</span>
+        </LeftBoxInput2Text>
+        <LeftBoxInputDiv>
+          <Image src={TetherIcn} alt="TetherIcn" width={27} height={27} />
+          <LeftBoxInput type="number" placeholder="تتر" />
+        </LeftBoxInputDiv>
+      </LeftBoxInput2>
+      <LeftBoxButton onClick={Trade}>معامله</LeftBoxButton>
+
+      <LeftBoxFooter>
+        <LeftBoxFooterImg>
+          <Image src={circles} alt="3circles" />
+        </LeftBoxFooterImg>
+        <LeftBoxFooterText>
+          <span>معاملات باز</span>
+        </LeftBoxFooterText>
+      </LeftBoxFooter>
+    </LeftBox>
+  );
+};
+
+export default TradeBox;
+
+
 const LeftBox = styled.div`
   grid-column: 1;
   grid-row: 3 / span 2;
@@ -89,6 +153,8 @@ const LeftBoxInputDiv = styled.div`
   border-radius: 8px;
   padding-right: 10px;
   height: 50px;
+  display: flex;
+  align-items: center;
 `;
 
 const LeftBoxInput1Text2 = styled.div`
@@ -134,66 +200,3 @@ const LeftBoxFooterImg = styled.div``;
 const LeftBoxFooterText = styled.div`
   font-size: 25px;
 `;
-
-const TradeBox = () => {
-  return (
-    <LeftBox>
-      <LeftBoxHead>
-        <LeftBoxHeadText1>
-          <span>تعیین قیمت</span>
-          <Image
-            src={BigLine}
-            alt="BigLine"
-            width={200}
-            style={{ margin: "-4px" }}
-          />
-        </LeftBoxHeadText1>
-        <Image src={Line} alt="Line" height={30} style={{ paddingRight: 6 }} />
-        <LeftBoxHeadText2>
-          <span>معامله سریع</span>
-          <Image src={BlueLine} alt="BlueLine" style={{ margin: "-5px" }} />
-        </LeftBoxHeadText2>
-      </LeftBoxHead>
-      <LeftBoxInput1>
-        <LeftBoxInput1Text1>
-          <span>پرداخت میکنم:</span>
-          <LeftBoxInput1Text2>
-            <span>موجودی: ۲/۵۰۰/۰۰۰ IRT</span>
-            <Image src={Wallet} alt="Wallet" width={23} height={23} />
-          </LeftBoxInput1Text2>
-        </LeftBoxInput1Text1>
-
-        <LeftBoxInputDiv>
-          <Image src={IRN} alt="IRN" width={27} height={27} />
-          <LeftBoxInput type="number" placeholder="تومان" />
-        </LeftBoxInputDiv>
-      </LeftBoxInput1>
-
-      <LeftBoxArrow>
-        <Image src={arrow} alt="arrow" width={30} height={30} />
-      </LeftBoxArrow>
-
-      <LeftBoxInput2>
-        <LeftBoxInput2Text>
-          <span>دریافت میکنم:</span>
-        </LeftBoxInput2Text>
-        <LeftBoxInputDiv>
-          <Image src={TetherIcn} alt="TetherIcn" width={27} height={27} />
-          <LeftBoxInput type="number" placeholder="تتر" />
-        </LeftBoxInputDiv>
-      </LeftBoxInput2>
-      <LeftBoxButton onClick={Trade}>معامله</LeftBoxButton>
-
-      <LeftBoxFooter>
-        <LeftBoxFooterImg>
-          <Image src={circles} alt="3circles" />
-        </LeftBoxFooterImg>
-        <LeftBoxFooterText>
-          <span>معاملات باز</span>
-        </LeftBoxFooterText>
-      </LeftBoxFooter>
-    </LeftBox>
-  );
-};
-
-export default TradeBox;

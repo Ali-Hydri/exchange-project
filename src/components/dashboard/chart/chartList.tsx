@@ -33,53 +33,6 @@ type CoinType = {
   atl_change_percentage: number;
 };
 
-const ChartBoxTable = styled.table`
-  direction: rtl;
-  width: 100%;
-  height: 92%;
-  
-  @media (max-width: 768px) {
-    th:nth-child(n + 4),
-    td:nth-child(n + 4) {
-      display: none;
-    }
-  }
-`;
-
-const ChartListTableHead = styled.th`
-  height: 40px;
-  border-bottom: 2px solid gray;
-  
-`;
-
-const ChartBoxTableBody = styled.th`
-  height: 40px;
-`;
-
-const ChartList = styled.div`
-  grid-column: 1 / span 3;
-  grid-row: 6;
-  background-color: #101828;
-  border-radius: 16px;
-  direction: rtl;
-  font-size: 24px;
-  padding: 20px;
-  @media (max-width: 768px) {
-    height: auto;
-    grid-column: 1;
-    grid-row: 10;
-    display: grid;
-    font-size: 18px;
-  }
-`;
-
-const AllCoins = styled.div`
-  text-align: center;
-  color: #0257ea;
-  font-size: 24px;
-  margin-bottom: 5px;
-`;
-
 const Chart = () => {
   const [coins, setCoins] = useState([]);
   const exchangeRate = 90000;
@@ -148,7 +101,7 @@ const Chart = () => {
                       {coin.price_change_24h > 0 ? "▲" : "▼"}
                     </ChartBoxTableBody>
                     <ChartBoxTableBody>
-                      {coin.current_price * exchangeRate} تومن
+                      {(coin.current_price * exchangeRate).toFixed(0)} تومن
                     </ChartBoxTableBody>
                     <ChartBoxTableBody style={{ direction: "ltr" }}>
                       {coin.market_cap_change_24h}
@@ -163,7 +116,6 @@ const Chart = () => {
               <span>loading...</span>
             )}
           </tbody>
-          {/* <br /> */}
         </ChartBoxTable>
         <AllCoins>مشاهده همه</AllCoins>
       </ChartList>
@@ -171,4 +123,51 @@ const Chart = () => {
   );
 };
 
+  
+  const ChartBoxTable = styled.table`
+    direction: rtl;
+    width: 100%;
+    height: 92%;
+    
+    @media (max-width: 768px) {
+      th:nth-child(n + 4),
+      td:nth-child(n + 4) {
+        display: none;
+      }
+    }
+  `;
+  
+  const ChartListTableHead = styled.th`
+    height: 40px;
+    border-bottom: 2px solid gray;
+    
+  `;
+  
+  const ChartBoxTableBody = styled.th`
+    height: 40px;
+  `;
+  
+  const ChartList = styled.div`
+    grid-column: 1 / span 3;
+    grid-row: 6;
+    background-color: #101828;
+    border-radius: 16px;
+    direction: rtl;
+    font-size: 24px;
+    padding: 20px;
+    @media (max-width: 768px) {
+      height: auto;
+      grid-column: 1;
+      grid-row: 10;
+      display: grid;
+      font-size: 18px;
+    }
+  `;
+  
+  const AllCoins = styled.div`
+    text-align: center;
+    color: #0257ea;
+    font-size: 24px;
+    margin-bottom: 5px;
+  `;
 export default Chart;
